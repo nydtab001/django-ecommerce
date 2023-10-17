@@ -1,0 +1,33 @@
+{% extends "products/category_list.html" %}
+
+{% block cards %}
+{% if category_query %}
+<h1>{{ category_query }}</h1>
+{% endif %}
+<div style="margin-top:0" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+{% for product in products %}
+     <div class="col" style="margin-top:0; margin-bottom: 25px ; height: 340px; overflow: hidden; width: 220px">
+    <div class="card h-100">
+        <a href="{% url 'product-detail' product.id %}" style="padding: 3px;color: inherit;text-decoration:none; max-height: 100%">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top" height="50%">
+            <div class="card-body stacked-elements">
+            <div>
+                <h6 class="card-title two-line-text" style="width:max-width"><strong>{{ product.name }}</strong></h6>
+            </div>
+            <div style="padding-bottom:5px;">
+                <span class="fa fa-star checked" style="font-size:14px"></span>
+                <span style="font-size:14px">{{ product.rating }}</span>
+                <span class="text-muted">({{ product.productreview_set.count }})</span>
+                <div style="padding-bottom: 0px; height: fit-content ;"><strong>${{ product.price }}</strong></div>
+            </div>
+                <form style="margin: auto; width: fit-content; padding-top: 10px" action="{% url 'add_to_cart' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <input class="btn btn-primary" type="submit" value="Add to Cart">
+                </form>
+            </div>
+        </a>
+    </div>
+     </div>
+{% endfor %}
+</div>
+    {% endblock %}

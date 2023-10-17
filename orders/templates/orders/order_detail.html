@@ -1,0 +1,22 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <h2>Order Details</h2>
+    <div class="media content-section">
+        <p><strong>Order ID: {{ object.id }} </strong>| ORDERED: {{ object.order_date|date:"d M Y" }}</p>
+        {% for item in object.orderitem_set.all %}
+            <div class="media content-section" style="display:flex;">
+                <div style="width:50%">
+                <p>{{ item.product.name }}</p>
+                <p>Quantity: {{ item.quantity }}</p>
+                <p>${{ item.price }}</p>
+                </div>
+                <a class="btn btn-primary" style="width:50%;height:fit-content;align-self:right;" href="{% url 'add_review' item.product.id %}">Add Review</a>
+            </div>
+        {% endfor %}
+        <strong>
+            <p>Total Quantity: {{ object.total_quantity }}</p>
+            <p>Total Price for Order: ${{ object.total_price }}</p>
+            <p>Order Status: {{ object.status }}</p>
+        </strong>
+    </div>
+{% endblock %}

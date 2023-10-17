@@ -1,0 +1,32 @@
+{% extends "users/base.html" %}
+{% block content %}
+  <h1>{{ object.user.name }}</h1>
+
+  <div class="row">
+    <div class="col-md-8">
+      {% for item in object.cartitem_set.all %}
+        <div class="media content-section" style="margin-bottom: 10px; padding: 10px">
+          <p><strong>Name: {{ item.product.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.price }}</strong></p>
+          <form action="{% url 'remove_from_cart' item.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Remove">
+          </form>
+        </div>
+      {% empty %}
+        <div class="col-md-8">No items in the cart.</div>
+      {% endfor %}
+    </div>
+
+    {% if object.cartitem_set.all %}
+      <div style="background-color: black" class="col-md-4">
+        <div style="color: white; list-style-type: none">
+          <div>total quantity: {{ object.total_quantity }}</div>
+          <div>total price: ${{ object.total_price }}</div>
+        </div>
+        <a href="{% url 'checkout' %}">
+          <button>Checkout</button>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

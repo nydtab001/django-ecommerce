@@ -1,0 +1,23 @@
+{% extends "users/base.html" %}
+{% block content %}
+{% load static %}
+<div class="generic-template" style="background-color:white; -webkit-font-smoothing: antialiased;  margin: auto; padding: 30px;height: fit-content; width: fit-content; left: 50%; -ms-transformX: translate(-50%); transformX: translate(-50%); border: 1px solid black">
+  <div class="ui">
+
+      <form class="ui large form" style="width: fit-content;">
+          <div style="width: fit-content;">
+              <div class="column-contain" style="width: fit-content;">
+                  <img src="{% static 'payments/images/fail_cross.png' %}" alt="GO" width="60" style="border: 0; font-size: 0; padding: 0; display: block; margin-left: auto; margin-right: auto;">
+                     <h1 style="padding-top: 17px; color: #ac0000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 700; line-height: 34px; width: fit-content; margin: auto; margin-bottom: 0; margin-top: 0;">Payment failed</h1>
+                  <div class="content stacked-elements" style="width: 500px;padding-top: 17px;">
+                      <p class="element fw-light fs-5" style="text-align: center;">Try Again Later</p>
+                  </div>
+              </div>
+              <div style="padding-top: 5px; width: 100%" class="text-center">
+                  <a class="ui large teal submit fluid btn" href="{% url 'home' %}" style="width: fit-content">Go back to home</a>
+              </div>
+          </div>
+      </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+1.Users App:
+
+Models:
+User (Custom User model to extend the built-in AbstractUser or AbstractBaseUser)
+Profile (Additional user profile information)
+Views:
+RegistrationView (Handles user registration)
+LoginView (Handles user login)
+ProfileView (Displays and updates user profile)
+Forms:
+UserRegistrationForm (Handles user registration form)
+UserProfileForm (Handles user profile form)
+
+2.Products App:
+
+Models:
+Category (Represents product categories)
+Product (Represents individual products)
+Views:
+ProductListView (Displays a list of products)
+ProductDetailView (Displays details of a specific product)
+Forms:
+ProductForm (Handles product creation and editing form)
+
+3.Cart App:
+
+Models:
+Cart (Stores cart information for each user)
+CartItem (Represents items in the cart)
+Views:
+CartView (Displays the cart contents)
+AddToCartView (Handles adding products to the cart)
+RemoveFromCartView (Handles removing products from the cart)
+
+4.Orders App:
+
+Models:
+Order (Represents an order placed by a user)
+OrderItem (Represents items in an order)
+Views:
+OrderView (Displays order details and confirmation)
+CheckoutView (Handles order checkout and payment)
+
+5.Categories App:
+
+Models:
+Category (Represents additional categorization or subcategories within the product categories)
+Views:
+CategoryView (Displays products within a specific category)
+
+6.SEO App:
+
+Models:
+SEO (Stores SEO-related information for products or categories)
+Views:
+SEOView (Handles SEO-related functionality)
+
+7. Payments App:
+
+Models:
+Payment: Represents a payment made for an order with fields like order, payment_method, amount, timestamp, etc.
+
+8.Reviews App:
+
+Models:
+ProductReview: Represents reviews given by users for products with fields like product, user, rating, comment, etc.

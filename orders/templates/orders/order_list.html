@@ -1,0 +1,19 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+    <h2>Orders</h2>
+    {% for order in orders %}
+        <div class="media content-section">
+            <p><strong>Order ID: {{ order.id }}</strong> | ORDERED: {{ order.order_date|date:"d M Y" }}</p>
+            <p>Total Quantity: {{ order.total_quantity }}</p>
+            <p>Total Price for Order: ${{ order.total_price }}</p>
+            <p>Order Status: {{ order.status }}</p>
+            <a href="{% url 'order-detail' order.id %}">
+                <button>Order Details</button>
+            </a>
+        </div>
+    {% empty %}
+        <div class="col-md-8">No items ordered.</div>
+    {% endfor %}
+    <!-- Add more rows for order history -->
+{% endblock %}

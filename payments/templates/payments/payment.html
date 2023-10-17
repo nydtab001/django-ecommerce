@@ -1,0 +1,37 @@
+{% extends "users/base.html" %}
+{% load mathfilters %}
+
+{% block content %}
+<div class="container">
+  <h2>Payment</h2>
+  <div class="payment-details">
+    <h3>Order Summary</h3>
+    <ul>
+      {% for item in line_items %}
+        <li>{{ item.quantity }}x {{ item.price_data.product_data.name }} - ${{ item.price_data.unit_amount|div:100 }}</li>
+      {% endfor %}
+    </ul>
+    <p>Total: ${{ total_price|div:100 }}</p>
+  </div>
+  <div class="stripe-payment">
+    <h3>Complete Your Payment</h3>
+    <script src="https://js.stripe.com/v3/"></script>
+  </div>
+   <form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+        {% csrf_token %}
+        {{ pp_button.render }}
+    </form>
+</div>
+
+<script>
+  const stripe = Stripe('your_stripe_public_key');
+  const sessionId = '{{ session_id }}';
+
+  const checkoutButton = document.getElementById('checkout-button');
+  checkoutButton.addEventListener('click', function () {
+    stripe.redirectToCheckout({
+      sessionId: sessionId
+    });
+  });
+</script>
+{% endblock %}

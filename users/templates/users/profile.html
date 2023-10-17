@@ -1,0 +1,19 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+        <section class="content-section col-md-8 mx-auto">
+            <h1>User Profile</h1>
+            <div class="content-section">
+                <h2>Personal Details</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        {{ u_form|crispy }}
+                    </fieldset>
+                    <!-- Add more profile details here -->
+                    <button type="submit">update</button>
+                </form>
+            </div>
+
+        </section>
+{% endblock %}

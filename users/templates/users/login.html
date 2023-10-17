@@ -1,0 +1,14 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section col-md-4 mx-auto">
+<form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend>Login</legend>
+        {{ form|crispy }}
+        <button type="submit">login</button>
+    </fieldset>
+</form>
+</div>
+{% endblock %}

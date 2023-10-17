@@ -1,0 +1,29 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section" style="width: 75%; margin: auto">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Write Review</legend>
+            <label>Rating:</label><br>
+            <div class="rating">
+    <input type="radio" id="star1" name="rating" value="2" required>
+    <label for="star1" id="label1" class="fa fa-star" style="color: #dddddd;cursor: pointer;"></label>
+    <input type="radio" id="star2" name="rating" value="4" required>
+    <label for="star2" id="label2" class="fa fa-star" style="color: #dddddd;cursor: pointer;"></label>
+    <input type="radio" id="star3" name="rating" value="6" required>
+    <label for="star3" id="label3" class="fa fa-star" style="color: #dddddd;cursor: pointer;"></label>
+    <input type="radio" id="star4" name="rating" value="8" required>
+    <label for="star4" id="label4" class="fa fa-star" style="color: #dddddd;cursor: pointer;"></label>
+    <input type="radio" id="star5" name="rating" value="10" required>
+    <label for="star5" id="label5" class="fa fa-star" style="color: #dddddd;cursor: pointer;"></label>
+</div>
+            {{ r_form|crispy }}
+            <button class="btn btn-primary" type="submit">Submit Review</button>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="{% static 'users/main.js' %}"></script>
+{% endblock %}

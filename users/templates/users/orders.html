@@ -1,0 +1,29 @@
+{% extends "users/base.html" %}
+{% block content %}
+<h2>Orders</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders_list %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.products }}</td>
+                            <td>{{ order.quantity }}</td>
+                            <td>{{ order.order_date }}</td>
+                            <td>${{ order.amount }}</td>
+                            <td>{{ order.status }}</td>
+                        </tr>
+                    {% endfor %}
+                        <!-- Add more rows for order history -->
+                    </tbody>
+                </table>
+{% endblock %}
