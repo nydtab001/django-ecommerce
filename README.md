@@ -21,6 +21,28 @@ This is a basic e-commerce website built using Django, offering a range of featu
 * Ability to add new products.
 * Editing product details.
 
+### Product Reviews
+
+* Allow users to leave product reviews.
+* Comments and ratings for products.
+
+### Cart Management
+
+* Adding products to the shopping cart.
+* Viewing and editing the cart.
+* Removing items from the cart.
+* Calculating the total cart cost.
+
+### Order Management
+
+* Viewing order history with details of past purchases.
+* Order details, including product names, quantities, and prices
+
+### Payment Integration
+
+* Integration with PayPal for seamless and secure payments.
+* Payment processing for product purchases.
+
 ## Usage
 
 1. Clone the repository to your local machine:
