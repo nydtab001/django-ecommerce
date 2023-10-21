@@ -26,7 +26,7 @@ STRIPE_TEST_SECRET_KEY = config('STRIPE_TEST_SECRET_KEY')
 STRIPE_TEST_PUBLISHABLE_KEY = config('STRIPE_TEST_PUBLISHABLE_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['tc32.pythonanywhere.com']
 
@@ -131,6 +131,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR, 'payments']
+STATIC_ROOT = '/home/tc32/webapps/yourwebapp/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
