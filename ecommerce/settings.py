@@ -28,7 +28,7 @@ STRIPE_TEST_PUBLISHABLE_KEY = config('STRIPE_TEST_PUBLISHABLE_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['tc32.pythonanywhere.comtc32.pythonanywhere.com']
+ALLOWED_HOSTS = ['tc32.pythonanywhere.com']
 
 # Application definition
 
