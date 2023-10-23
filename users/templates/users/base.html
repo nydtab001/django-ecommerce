@@ -25,9 +25,15 @@
                     </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {% if user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">{{ user.first_name }}(admin)</a>
+                </li>
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' %}">{{ user.first_name }}</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'cart-detail' %}"><i class="fas fa-shopping-cart"></i></a>
                 </li >
