@@ -93,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tc32$ecommerce',
         'USER': 'tc32',
-        'PASSWORD': 'nydtab001',
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
         'HOST': 'tc32.mysql.pythonanywhere-services.com',
         'PORT': '',
     }
