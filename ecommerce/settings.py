@@ -152,7 +152,7 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/home/tc32/webapps/yourwebapp/'
 
 PAYPAL_CLIENT_ID = 'AfMwYPKmf-MAi4GDuOh4WS-3EzdxeqaH6yvI7AV8bTO6xn4d6KsSMftrj7-CUJ6xkgDRZ3KxXykl6U44'
 PAYPAL_SECRET = 'EDV7ElJnSMfrPotTZ69_t89sxon_Wq3Tp4GMRoUmxl3f69r_70BZVg3KGRElWLSc1rj8zIKwSoapasx7'
