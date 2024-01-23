@@ -1,4 +1,5 @@
 {% extends "products/category_list.html" %}
+{% load humanize %}
 
 {% block cards %}
 {% if category_query %}
@@ -20,7 +21,7 @@
                 <span class="fa fa-star checked" style="font-size:14px"></span>
                 <span style="font-size:14px">{{ product.rating }}</span>
                 <span class="text-muted">({{ product.productreview_set.count }})</span>
-                <div style="padding-bottom: 0px; height: fit-content ;"><strong>${{ product.price }}</strong></div>
+                <div style="padding-bottom: 0px; height: fit-content ;"><strong>${{ product.price|intcomma }}</strong></div>
             </div>
                 <form style="margin: auto; width: fit-content; padding-top: 10px" action="{% url 'add_to_cart' product.id %}" method="POST">
                     {% csrf_token %}

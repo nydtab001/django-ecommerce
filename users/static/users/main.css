@@ -153,3 +153,19 @@ a.article-title:hover {
 .starlb {
     content: "\2605";
 }
+
+.grid-x {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.cell.auto {
+    flex: 1 1 0px;
+}
+
+.cell {
+    flex: 0 0 auto;
+    min-height: 0px;
+    min-width: 0px;
+    width: 100%;
+}

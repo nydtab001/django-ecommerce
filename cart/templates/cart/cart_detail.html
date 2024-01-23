@@ -1,12 +1,13 @@
 {% extends "users/base.html" %}
 {% block content %}
-  <h1>{{ object.user.name }}</h1>
+{% load humanize %}
+  <div style="font-weight: bold; font-size: 28px; padding-bottom: 15px; padding-top:0">Cart</div>
 
   <div class="row">
-    <div style="height: fit-content; background-color:white; border: solid 1px #D3D1D1;" class="col-md-8">
+    <div style="height: fit-content; background-color:white; border: 1px solid rgba(0,0,0,.125);" class="col-md-8">
       {% for item in object.cartitem_set.all %}
-        <div style="background-color: white; height: 90px;position: relative; padding: 10px; border-bottom: {% if forloop.last %}none{% else %}solid 1px{% endif %} #D3D1D1;">
-          <p><strong>Name: {{ item.product.name }} - Price: ${{ item.price }}</strong></p>
+        <div style="background-color: white; height: 90px;position: relative; padding: 10px; border-bottom: {% if forloop.last %}none{% else %}solid 1px{% endif %} rgba(0,0,0,.125);">
+          <p><strong>Name: {{ item.product.name }} - Price: ${{ item.price|intcomma }}</strong></p>
           <form action="{% url 'update-quantity' item.id %}" method="POST">
             {% csrf_token %}
             <p style="position: absolute; bottom: 0; right: 10px;">Quantity: <input id="quantityid_{{ item.id }}" size="3" style="width: 3em" type="number" name="quantity" value="{{ item.quantity }}" min="1">
@@ -23,15 +24,27 @@
     </div>
 
     {% if object.cartitem_set.all %}
-      <div style="background-color: black" class="col-md-4">
-        <div style="color: white; list-style-type: none">
-          <div>total quantity: {{ object.total_quantity }}</div>
-          <div>total price: ${{ object.total_price }}</div>
+    <div style="padding-left: 20px" class="col-md-4">
+      <div style="background-color: white; border: 1px solid rgba(0,0,0,.125); display: flex; flex-direction: column; padding: 20px; align-items: stretch;" >
+        <div style="color: black; list-style-type: none; flex-grow: 1;">
+          <div style="font-weight:bold;font-size: 17px; padding-bottom: 15px;">Summary</div>
+          <div style="font-weight:480; font-size: 14px; padding-bottom: 5px; color: rgba(0,0,0,.5)">{{ object.total_quantity }} items</div>
+          <div class="grid-x" style="padding-bottom: 15px; justify-content: space-between; align-items: flex-end; height: fit-content">
+            <div class="cell auto">
+              <p style="font-weight:bold; font-size: 14px; margin: 0px;line-height: 1.38462rem;">TOTAL:</p>
+            </div>
+            <div class="cell" style="flex: 0 0 auto;">
+              <p style="font-size: 24px; font-weight:bold; margin: 0;padding:0;text-align: right; line-height: 1.38462rem;">
+                <span style="margin: 0; padding: 0;margin-bottom:0px;align-items: flex-end; color: #198754">$ {{ object.total_price|intcomma }}</span>
+              </p>
+            </div>
+          </div>
         </div>
-        <a href="{% url 'checkout' %}">
-          <button class="btn btn-success">Checkout</button>
+        <a href="{% url 'checkout' %}" style="width: 100%; display: block;">
+          <button class="btn btn-success" style="width: 100%; box-sizing: border-box;">Checkout</button>
         </a>
       </div>
+    </div>
     {% endif %}
   </div>
 {% endblock %}
