@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
-from cart.views import CartDetailView, add_to_cart, remove_from_cart
+from cart.views import CartDetailView, add_to_cart, remove_from_cart, update_quantity
 from orders.views import OrderListView, OrderDetailView
 from payments.views import checkout, payment_completed, payment_failed
 from products.views import ProductList, ProductCreateView, ProductDetailView, update_product, product_search
@@ -42,6 +42,7 @@ urlpatterns = [
     path('product/update/<int:pk>', update_product, name='product-create'),
     path('cart/', CartDetailView.as_view(), name='cart-detail'),
     path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
+    path('update-quantity/<int:cart_item_id>/', update_quantity, name='update-quantity'),
     path('remove-from-cart/<int:cart_item_id>/', remove_from_cart, name='remove_from_cart'),
     path('orders/<uuid:pk>/', OrderDetailView.as_view(), name='order-detail'),
     path('checkout/', checkout, name='checkout'),

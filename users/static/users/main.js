@@ -1,7 +1,4 @@
 const labels = document.querySelectorAll('.rating label');
-//const l = document.getElementById('c-rating')
-
-//console.log(l)
 
 function handleSelect(selectedLabel) {
   labels.forEach((label, index) => {
@@ -32,3 +29,6 @@ $(document).ready(function() {
     });
 });
 
+function submitForm() {
+            document.getElementById("updateQuantityForm").submit();
+}

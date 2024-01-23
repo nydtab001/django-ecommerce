@@ -37,6 +37,20 @@ def add_to_cart(request, product_id):
 
 
 @login_required
+def update_quantity(request, cart_item_id):
+    cart_item = get_object_or_404(CartItem, pk=cart_item_id)
+    cart = Cart.objects.get(user=request.user)
+    quantity = request.POST.get('quantity')
+    cart_item.quantity = quantity
+    cart_item.update_price()
+    cart_item.update_subtotal()
+    cart_item.save()
+    cart.update_totals()
+    cart.save()
+    return redirect(reverse('cart-detail'))
+
+
+@login_required
 def remove_from_cart(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, pk=cart_item_id)
     cart = Cart.objects.get(user=request.user)

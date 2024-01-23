@@ -3,13 +3,18 @@
   <h1>{{ object.user.name }}</h1>
 
   <div class="row">
-    <div class="col-md-8">
+    <div style="height: fit-content; background-color:white; border: solid 1px #D3D1D1;" class="col-md-8">
       {% for item in object.cartitem_set.all %}
-        <div class="media content-section" style="margin-bottom: 10px; padding: 10px">
-          <p><strong>Name: {{ item.product.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.price }}</strong></p>
-          <form action="{% url 'remove_from_cart' item.id %}" method="POST">
+        <div style="background-color: white; height: 90px;position: relative; padding: 10px; border-bottom: {% if forloop.last %}none{% else %}solid 1px{% endif %} #D3D1D1;">
+          <p><strong>Name: {{ item.product.name }} - Price: ${{ item.price }}</strong></p>
+          <form action="{% url 'update-quantity' item.id %}" method="POST">
             {% csrf_token %}
-            <input type="submit" value="Remove">
+            <p style="position: absolute; bottom: 0; right: 10px;">Quantity: <input id="quantityid_{{ item.id }}" size="3" style="width: 3em" type="number" name="quantity" value="{{ item.quantity }}" min="1">
+            <button class="btn btn-primary" type="submit">Update quantity</button></p>
+          </form>
+            <form style="position: absolute; bottom: 0;" action="{% url 'remove_from_cart' item.id %}" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-primary" type="submit" value="Remove">
           </form>
         </div>
       {% empty %}
@@ -24,7 +29,7 @@
           <div>total price: ${{ object.total_price }}</div>
         </div>
         <a href="{% url 'checkout' %}">
-          <button>Checkout</button>
+          <button class="btn btn-success">Checkout</button>
         </a>
       </div>
     {% endif %}
