@@ -160,7 +160,7 @@ a.article-title:hover {
 }
 
 .cell.auto {
-    flex: 1 1 0px;
+    flex: none;
 }
 
 .cell {
@@ -168,4 +168,28 @@ a.article-title:hover {
     min-height: 0px;
     min-width: 0px;
     width: 100%;
+}
+
+@media (min-width: 996px) {
+
+  .cell.auto {
+    flex: 1 1 0px;
+}
+
+  p#price {
+    text-align: right;
+    /*flex: 0 0 auto;*/
+  }
+}
+
+@media (max-width: 762px) {
+
+  .cell.auto {
+    flex: 1 1 0px;
+}
+
+  p#price {
+    text-align: right;
+    /*flex: 0 0 auto;*/
+  }
 }

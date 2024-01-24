@@ -6,17 +6,19 @@
   <div class="row">
     <div style="height: fit-content; background-color:white; border: 1px solid rgba(0,0,0,.125);" class="col-md-8">
       {% for item in object.cartitem_set.all %}
-        <div style="background-color: white; height: 90px;position: relative; padding: 10px; border-bottom: {% if forloop.last %}none{% else %}solid 1px{% endif %} rgba(0,0,0,.125);">
+        <div style="background-color: white; height: fit-content;position: relative; padding: 10px; border-bottom: {% if forloop.last %}none{% else %}solid 1px{% endif %} rgba(0,0,0,.125);">
           <p><strong>Name: {{ item.product.name }} - Price: ${{ item.price|intcomma }}</strong></p>
-          <form action="{% url 'update-quantity' item.id %}" method="POST">
+          <div style="display: flex; flex-direction: column; align-items: flex-end; height: fit-content">
+          <form style="margin-bottom: 10px;" action="{% url 'update-quantity' item.id %}" method="POST">
             {% csrf_token %}
-            <p style="position: absolute; bottom: 0; right: 10px;">Quantity: <input id="quantityid_{{ item.id }}" size="3" style="width: 3em" type="number" name="quantity" value="{{ item.quantity }}" min="1">
-            <button class="btn btn-primary" type="submit">Update quantity</button></p>
+            <p style="margin-bottom: 0px; font-size: 14px">Quantity: <input id="quantityid_{{ item.id }}" size="3" style="width: 3em" type="number" name="quantity" value="{{ item.quantity }}" min="1">
+            <button style="font-size: 14px" class="btn btn-primary" type="submit">Update quantity</button></p>
           </form>
-            <form style="position: absolute; bottom: 0;" action="{% url 'remove_from_cart' item.id %}" method="POST">
+            <form style="margin-bottom: 10px;" action="{% url 'remove_from_cart' item.id %}" method="POST">
             {% csrf_token %}
-            <input class="btn btn-primary" type="submit" value="Remove">
+            <input style="font-size: 14px" class="btn btn-danger" type="submit" value="Remove">
           </form>
+          </div>
         </div>
       {% empty %}
         <div class="col-md-8">No items in the cart.</div>
@@ -34,14 +36,14 @@
               <p style="font-weight:bold; font-size: 14px; margin: 0px;line-height: 1.38462rem;">TOTAL:</p>
             </div>
             <div class="cell" style="flex: 0 0 auto;">
-              <p style="font-size: 24px; font-weight:bold; margin: 0;padding:0;text-align: right; line-height: 1.38462rem;">
+              <p id="price" style="font-size: 24px; font-weight:bold; margin: 0;padding:0; line-height: 1.38462rem;">
                 <span style="margin: 0; padding: 0;margin-bottom:0px;align-items: flex-end; color: #198754">$ {{ object.total_price|intcomma }}</span>
               </p>
             </div>
           </div>
         </div>
         <a href="{% url 'checkout' %}" style="width: 100%; display: block;">
-          <button class="btn btn-success" style="width: 100%; box-sizing: border-box;">Checkout</button>
+          <button class="btn btn-success" style="width: 100%; box-sizing: border-box; font-weight: bold; font-size: 14px;">Checkout</button>
         </a>
       </div>
     </div>
