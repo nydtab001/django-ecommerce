@@ -1,33 +1,17 @@
-# Use Python 3.11 (more compatible with all dependencies)
-FROM python:3.11-slim
+# Use the official Python image as the base image
+FROM python:3.11
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
-# Set work directory
+# Set the working directory in the container
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    default-libmysqlclient-dev \
-    pkg-config \
-    && rm -rf /var/lib/apt/lists/*
+# Copy the application files into the working directory
+COPY . /app
 
-# Install Python dependencies
-COPY requirements.txt /app/
-RUN pip install --upgrade pip
+# Install the application dependencies
 RUN pip install -r requirements.txt
-
-# Copy project
-COPY . /app/
-
-# Collect static files
-RUN python manage.py collectstatic --noinput
 
 # Expose port
 EXPOSE 8000
 
-# Run migrations and start server
-CMD python manage.py migrate && gunicorn ecommerce.wsgi:application --bind 0.0.0.0:8000
+# Define the entry point for the container
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

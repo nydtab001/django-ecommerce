@@ -1,0 +1,33 @@
+{% extends "users/base.html" %}
+{% block content %}
+{% load static %}
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <title>GO Email Templates: Generic Template</title>
+    </head>
+
+<div class="generic-template" style="background-color:white; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; margin: auto; padding: 40px; height: fit-content; width: fit-content; left: 50%; -ms-transform: translateX(-50%); transformX: translate(-50%); border: 1px solid black">
+    <img src="{% static 'payments/images/success_check.png' %}" alt="GO" width="60" style="border: 0; font-size: 0; padding: 0; display: block; margin-left: auto; margin-right: auto;">
+    <h1 style="padding-top: 17px; color: #04ac00; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 700; line-height: 34px; width: fit-content; margin: auto; margin-bottom: 0; margin-top: 0;">Payment received</h1>
+    <div style="width: fit-content; margin: auto; padding-top: 30px; color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;">
+        <p style="color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 22px; margin: 0;">Your transaction was successful!</p>
+        <br><p style="color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 22px; margin: 0; "><strong>Payment Details:</strong><br>
+        Amount: €$moneyFormatter.format(${amount})
+        <br>
+        Account: ${accountNumber}.<br></p>
+        <br>
+        <p style="color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 22px; margin: 0;">We advise to keep this email for future reference.&nbsp;&nbsp;&nbsp;&nbsp;<br/></p>
+    </div>
+    <div style="height: 30px; border-bottom: 1px solid #D3D1D1; color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;"></div>
+    <div style="padding-top: 30px; color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;">
+        <p style="text-align: center; color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 22px; margin: 0;"><strong>Transaction reference: ${authorizationCode}</strong></p>
+        <p style="text-align: center; color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 22px; margin: 0;">Order date: [time] [date]</p>
+    </div>
+    <div style="padding-top: 20px; width: 100%" class="text-center">
+        <a href="{% url 'orders' %}" class="ui large teal submit fluid btn text-nowrap" style="margin: auto; width: fit-content;">View Orders</a>
+    </div>
+</div>
+{% endblock %}

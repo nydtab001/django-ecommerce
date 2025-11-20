@@ -1,0 +1,195 @@
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+.font-fam {
+  font-family: 'FreeSans', 'Nimbus Sans L', 'Liberation Sans',
+  'Helvetica Neue', 'Helvetica Neue LT Std', 'Helvetica',
+  'Arial', 'Lucida Sans Unicode', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+ul {
+  margin: 0;
+}
+
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row
+}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700,600);
+
+.teal{
+  background-color: #ffc952 !important;
+  color: #444444 !important;
+}
+
+.message{
+  text-align: left;
+}
+
+.price1{
+	font-size: 40px;
+	font-weight: 200;
+	display: block;
+	text-align: center;
+}
+.ui.message p {margin: 5px;}
+
+.column-contain {
+  display: flex;
+  flex-direction: column; /* Set the flex direction to column */
+  align-items: center; /* Optional: Center items horizontally */
+}
+
+.two-line-text {
+        line-height: 1.2em; /* Adjust this to match your font-size */
+        height: 2.4em; /* Twice the line-height, adjust as needed */
+        overflow: hidden;
+        text-overflow: ellipsis;
+}
+
+.rating {
+    display: inline-block;
+}
+
+.rating input[type="radio"]{
+    display: none;
+}
+
+.checked {
+  color: orange !important;
+}
+
+/*.rating label {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    line-height: 25px;
+    text-align: center;
+    color: #ddd;
+}*/
+
+.starlb {
+    content: "\2605";
+}
+
+.grid-x {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.cell.auto {
+    flex: none;
+}
+
+.cell {
+    flex: 0 0 auto;
+    min-height: 0px;
+    min-width: 0px;
+    width: 100%;
+}
+
+@media (min-width: 996px) {
+
+  .cell.auto {
+    flex: 1 1 0px;
+}
+
+  p#price {
+    text-align: right;
+    /*flex: 0 0 auto;*/
+  }
+}
+
+@media (max-width: 762px) {
+
+  .cell.auto {
+    flex: 1 1 0px;
+}
+
+  p#price {
+    text-align: right;
+    /*flex: 0 0 auto;*/
+  }
+}
