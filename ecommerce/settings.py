@@ -30,9 +30,9 @@ STRIPE_TEST_SECRET_KEY = config('STRIPE_TEST_SECRET_KEY')
 STRIPE_TEST_PUBLISHABLE_KEY = config('STRIPE_TEST_PUBLISHABLE_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # Set to False in production
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['tc32.pythonanywhere.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 # Application definition
 
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -143,8 +144,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR, 'payments']
-STATIC_ROOT = '/home/tc32/webapps/yourwebapp/static'
+STATICFILES_DIRS = [BASE_DIR / 'payments']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# WhiteNoise configuration
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -161,7 +165,7 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/tc32/webapps/yourwebapp/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 PAYPAL_CLIENT_ID = 'AfMwYPKmf-MAi4GDuOh4WS-3EzdxeqaH6yvI7AV8bTO6xn4d6KsSMftrj7-CUJ6xkgDRZ3KxXykl6U44'
 PAYPAL_SECRET = 'EDV7ElJnSMfrPotTZ69_t89sxon_Wq3Tp4GMRoUmxl3f69r_70BZVg3KGRElWLSc1rj8zIKwSoapasx7'
