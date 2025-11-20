@@ -1,4 +1,4 @@
-# Use the official Python image as the base image
+﻿# Use the official Python image as the base image
 FROM python:3.11
 
 # Set the working directory in the container
@@ -13,5 +13,5 @@ RUN pip install -r requirements.txt
 # Expose port
 EXPOSE 8000
 
-# Define the entry point for the container
+# Run the Django development server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
