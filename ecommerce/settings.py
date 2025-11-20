@@ -30,9 +30,9 @@ STRIPE_TEST_SECRET_KEY = config('STRIPE_TEST_SECRET_KEY')
 STRIPE_TEST_PUBLISHABLE_KEY = config('STRIPE_TEST_PUBLISHABLE_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True  # Set to False in production
 
-ALLOWED_HOSTS = ['tc32.pythonanywhere.com']
+ALLOWED_HOSTS = ['tc32.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -91,14 +91,22 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tc32$ecommerce',
-        'USER': 'tc32',
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': 'tc32.mysql.pythonanywhere-services.com',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Uncomment below for MySQL (production)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'tc32$ecommerce',
+#         'USER': 'tc32',
+#         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+#         'HOST': 'tc32.mysql.pythonanywhere-services.com',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
